@@ -1,12 +1,21 @@
-# macOS debug files
+# macOS system files
+.DS_Store
+
+# macOS debug symbols
 *.dSYM
 
 # compiled binaries
 *.out
 *.o
+*.obj
 *.exe
 a.out
+
+# build directory
 build/
-*.dSYM
-# macOS system files
-.DS_Store
+
+# VS Code settings
+.vscode/
+
+# temporary files
+*.log
