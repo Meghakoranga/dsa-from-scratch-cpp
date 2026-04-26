@@ -1,22 +1,28 @@
 #include<iostream>
+#include<vector>
 using namespace std;
-int fib(int n)
-{
-  if(n<0)
-  {  cout<<"Invalid Number \n";
-    return 0;
-  }
-  if (n<=1)
-    return n;
 
-  return (fib(n-1)+fib(n-2));  //T.C=O(2^n)
+int fib(int n, vector<int> &dp)
+{
+    if(n <= 1)
+        return n;
+
+    if(dp[n] != -1)
+        return dp[n];
+
+    dp[n] = fib(n-1, dp) + fib(n-2, dp);        //Memoization
+    return dp[n];
 }
+
 int main()
 {
-  int num;
-  cout<<"Enter the number ";
-  cin>>num;
-  cout<<"\nFibonacci of the number : "<<num <<" is "<<fib(num)<<endl;
+    int n;
+    cout << "Enter number: ";
+    cin >> n;
 
-  return 0;
+    vector<int> dp(n+1, -1);
+
+    cout << "Fibonacci: " << fib(n, dp) << endl;
+
+    return 0;
 }
