@@ -1,28 +1,28 @@
+//space optimized 
 #include<iostream>
-#include<vector>
 using namespace std;
-
-int fib(int n, vector<int> &dp)
+int fib(int n)
 {
-    if(n <= 1)
-        return n;
-
-    if(dp[n] != -1)
-        return dp[n];
-
-    dp[n] = fib(n-1, dp) + fib(n-2, dp);        //Memoization
-    return dp[n];
+  if(n<=1)
+    return n;
+  int a=0,b=1,next;
+  for(int i=2;i<=n;i++)
+  {
+    next = a+b;
+    a=b;
+    b=next;
+  }
+  return b;
 }
-
 int main()
 {
-    int n;
-    cout << "Enter number: ";
-    cin >> n;
+  int num;
+  cout<<"Enter any positive number : ";
+  cin>>num;
+  
+  if(num<0)
+  {cout<<"\nInvalid input";return 0;}  
 
-    vector<int> dp(n+1, -1);
-
-    cout << "Fibonacci: " << fib(n, dp) << endl;
-
-    return 0;
+  cout<<"Fibonacci of "<<num<<" is "<<fib(num)<<endl;
+  return 0;
 }
