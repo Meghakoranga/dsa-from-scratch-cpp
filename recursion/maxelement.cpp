@@ -2,7 +2,7 @@
 using namespace std;
 int maxelement(int arr[],int n)
 {
-  if(n==0)
+  if(n==1)
     return arr[0];
   return max(arr[0],maxelement(arr+1,n-1));
   
